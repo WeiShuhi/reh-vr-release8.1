@@ -92,6 +92,7 @@ GameObject:
   - component: {fileID: 3539700472237229061}
   - component: {fileID: 3539700472237229083}
   - component: {fileID: 114850350457908736}
+  - component: {fileID: 114850350457908737} # XRGraphicRaycaster
   m_Layer: 5
   m_Name: UILSLogin
   m_TagString: Untagged
@@ -177,6 +178,19 @@ MonoBehaviour:
     gameObject: {fileID: 1568484768885604}
   - key: LoginBtn
     gameObject: {fileID: 1920061237828514}
+--- !u!114 &114850350457908737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1386170326414932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17d859f6e6a7237489a15a358f54a160, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
 --- !u!1 &1568484768885604
 GameObject:
   m_ObjectHideFlags: 0
@@ -188,7 +202,8 @@ GameObject:
   - component: {fileID: 224944102343361862}
   - component: {fileID: 222162039596540310}
   - component: {fileID: 114107327146574444}
-  - component: {fileID: 114663064108016614}
+  - component: {fileID: 114663064108016615} # TMP_InputField
+  - component: {fileID: 114663064108016616} # XRButtonInteractable
   m_Layer: 5
   m_Name: Password
   m_TagString: Untagged
@@ -256,7 +271,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &114663064108016614
+--- !u!114 &114663064108016615
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -265,7 +280,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1568484768885604}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d199490a83bb2b844b9695cbf13b01ef, type: 3}
+  m_Script: {fileID: 11500000, guid: 48085d35e0e94db4aa320da9a719b783, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
@@ -324,6 +339,32 @@ MonoBehaviour:
   m_CaretWidth: 1
   m_ReadOnly: 0
   m_ShouldActivateOnSelect: 1
+--- !u!114 &114663064108016616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1568484768885604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b4c1f9f0a7c4c44b9b1e6a9c7e6a7c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Interactable: 1
+  m_SelectMode: 0
+  m_SelectActionTrigger: 0
+  m_DeSelectActionTrigger: 0
+  m_HoverEnterActionTrigger: 0
+  m_HoverExitActionTrigger: 0
+  m_ClickActionTrigger: 0
+  m_LongPressActionTrigger: 0
+  m_LongPressTime: 0.5
+  m_RepeatDelay: 0.2
+  m_RepeatInterval: 0.1
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1670632076201042
 GameObject:
   m_ObjectHideFlags: 0
@@ -335,7 +376,8 @@ GameObject:
   - component: {fileID: 224922312697997914}
   - component: {fileID: 222749306122254412}
   - component: {fileID: 114899069937167200}
-  - component: {fileID: 114341495829030012}
+  - component: {fileID: 114341495829030013} # TMP_InputField
+  - component: {fileID: 114341495829030014} # XRButtonInteractable
   m_Layer: 5
   m_Name: Account
   m_TagString: Untagged
@@ -403,7 +445,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &114341495829030012
+--- !u!114 &114341495829030013
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -412,7 +454,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1670632076201042}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d199490a83bb2b844b9695cbf13b01ef, type: 3}
+  m_Script: {fileID: 11500000, guid: 48085d35e0e94db4aa320da9a719b783, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
@@ -471,6 +513,32 @@ MonoBehaviour:
   m_CaretWidth: 1
   m_ReadOnly: 0
   m_ShouldActivateOnSelect: 1
+--- !u!114 &114341495829030014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1670632076201042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b4c1f9f0a7c4c44b9b1e6a9c7e6a7c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Interactable: 1
+  m_SelectMode: 0
+  m_SelectActionTrigger: 0
+  m_DeSelectActionTrigger: 0
+  m_HoverEnterActionTrigger: 0
+  m_HoverExitActionTrigger: 0
+  m_ClickActionTrigger: 0
+  m_LongPressActionTrigger: 0
+  m_LongPressTime: 0.5
+  m_RepeatDelay: 0.2
+  m_RepeatInterval: 0.1
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1910298475376026
 GameObject:
   m_ObjectHideFlags: 0
@@ -550,7 +618,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u8BF7\u8F93\u5165\u5E10\u53F7"
+  m_Text: "请输入账号"
 --- !u!1 &1920061237828514
 GameObject:
   m_ObjectHideFlags: 0
@@ -562,7 +630,8 @@ GameObject:
   - component: {fileID: 224532636050568724}
   - component: {fileID: 222002149542603454}
   - component: {fileID: 114719520540637998}
-  - component: {fileID: 114630311973242952}
+  - component: {fileID: 114630311973242952} # Button
+  - component: {fileID: 114630311973242953} # XRButtonInteractable
   m_Layer: 5
   m_Name: LoginBtn
   m_TagString: Untagged
@@ -670,6 +739,32 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 114719520540637998}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &114630311973242953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1920061237828514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b4c1f9f0a7c4c44b9b1e6a9c7e6a7c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Interactable: 1
+  m_SelectMode: 0
+  m_SelectActionTrigger: 0
+  m_DeSelectActionTrigger: 0
+  m_HoverEnterActionTrigger: 0
+  m_HoverExitActionTrigger: 0
+  m_ClickActionTrigger: 0
+  m_LongPressActionTrigger: 0
+  m_LongPressTime: 0.5
+  m_RepeatDelay: 0.2
+  m_RepeatInterval: 0.1
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
@@ -828,7 +923,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u8BF7\u8F93\u5165\u5BC6\u7801"
+  m_Text: "请输入密码"
 --- !u!1 &6506693271730501888
 GameObject:
   m_ObjectHideFlags: 0
@@ -1068,4 +1163,4 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u767B\u5F55"
+  m_Text: "登录"
