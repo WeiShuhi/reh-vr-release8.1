@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <linker>
   <assembly fullname="CommandLine">
     <type fullname="CommandLine.Error" preserve="all" />
@@ -401,5 +401,26 @@
     <type fullname="System.UInt32" preserve="all" />
     <type fullname="System.ValueTuple`2" preserve="all" />
     <type fullname="System.ValueType" preserve="all" />
+  </assembly>
+  <assembly fullname="UnityEngine.XR">
+    <type fullname="UnityEngine.XR.XRDevice" preserve="all" />
+    <type fullname="UnityEngine.XR.XRSettings" preserve="all" />
+    <type fullname="UnityEngine.XR.XRNode" preserve="all" />
+    <type fullname="UnityEngine.XR.XRInputTracking" preserve="all" />
+    <type fullname="UnityEngine.XR.XRControllerState" preserve="all" />
+    <type fullname="UnityEngine.XR.XRInputDevice" preserve="all" />
+    <type fullname="UnityEngine.XR.XRInputDeviceCharacteristics" preserve="all" />
+    <type fullname="UnityEngine.XR.XRInputDeviceSubsystem" preserve="all" />
+    <type fullname="UnityEngine.XR.XRDisplaySubsystem" preserve="all" />
+  </assembly>
+  <assembly fullname="UnityEngine.XR.Interaction.Toolkit">
+    <type fullname="UnityEngine.XR.Interaction.Toolkit.XRInteractionManager" preserve="all" />
+    <type fullname="UnityEngine.XR.Interaction.Toolkit.XRRig" preserve="all" />
+    <type fullname="UnityEngine.XR.Interaction.Toolkit.XRController" preserve="all" />
+    <type fullname="UnityEngine.XR.Interaction.Toolkit.InputActionManager" preserve="all" />
+    <type fullname="UnityEngine.XR.Interaction.Toolkit.IXRController" preserve="all" />
+    <type fullname="UnityEngine.XR.Interaction.Toolkit.IXRInputSource" preserve="all" />
+    <type fullname="UnityEngine.XR.Interaction.Toolkit.IXRInteractor" preserve="all" />
+    <type fullname="UnityEngine.XR.Interaction.Toolkit.IXRInteractable" preserve="all" />
   </assembly>
 </linker>

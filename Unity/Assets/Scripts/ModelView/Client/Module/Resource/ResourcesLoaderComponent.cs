@@ -103,6 +103,133 @@ namespace ET.Client
             await handler.Task;
             self.handlers.Add(location, handler);
         }
+
+        /// <summary>
+        /// 异步流式加载场景，支持中断与恢复
+        /// </summary>
+        /// <param name="self">ResourcesLoaderComponent实例</param>
+        /// <param name="location">场景资源路径</param>
+        /// <param name="loadSceneMode">场景加载模式</param>
+        /// <param name="progressCallback">加载进度回调</param>
+        /// <param name="cancellationToken">取消令牌，用于中断加载</param>
+        /// <returns></returns>
+        public static async ETTask<bool> LoadSceneStreamingAsync(this ResourcesLoaderComponent self, string location, LoadSceneMode loadSceneMode, System.Action<float> progressCallback = null, System.Threading.CancellationToken cancellationToken = default)
+        {
+            using CoroutineLock coroutineLock = await self.Root().GetComponent<CoroutineLockComponent>().Wait(CoroutineLockType.ResourcesLoader, location.GetHashCode());
+
+            HandleBase handler;
+            if (self.handlers.TryGetValue(location, out handler))
+            {
+                return true;
+            }
+
+            SceneHandle sceneHandle = self.package.LoadSceneAsync(location);
+            self.handlers.Add(location, sceneHandle);
+
+            // 等待场景加载完成
+            while (!sceneHandle.IsDone)
+            {
+                // 检查是否需要取消加载
+                if (cancellationToken.IsCancellationRequested)
+                {
+                    sceneHandle.Cancel();
+                    self.handlers.Remove(location);
+                    return false;
+                }
+
+                // 调用进度回调
+                if (progressCallback != null)
+                {
+                    progressCallback(sceneHandle.Progress);
+                }
+
+                // 等待一帧
+                await ETTask.Yield();
+            }
+
+            // 检查加载是否成功
+            if (sceneHandle.Status != EOperationStatus.Succeed)
+            {
+                self.handlers.Remove(location);
+                return false;
+            }
+
+            return true;
+        }
+
+        /// <summary>
+        /// 中断正在进行的场景加载
+        /// </summary>
+        /// <param name="self">ResourcesLoaderComponent实例</param>
+        /// <param name="location">场景资源路径</param>
+        /// <returns></returns>
+        public static bool CancelSceneLoad(this ResourcesLoaderComponent self, string location)
+        {
+            if (self.handlers.TryGetValue(location, out HandleBase handler))
+            {
+                if (handler is SceneHandle sceneHandle && !sceneHandle.IsDone)
+                {
+                    sceneHandle.Cancel();
+                    self.handlers.Remove(location);
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// 异步流式加载资源，支持中断与恢复
+        /// </summary>
+        /// <typeparam name="T">资源类型</typeparam>
+        /// <param name="self">ResourcesLoaderComponent实例</param>
+        /// <param name="location">资源路径</param>
+        /// <param name="progressCallback">加载进度回调</param>
+        /// <param name="cancellationToken">取消令牌，用于中断加载</param>
+        /// <returns></returns>
+        public static async ETTask<T> LoadAssetStreamingAsync<T>(this ResourcesLoaderComponent self, string location, System.Action<float> progressCallback = null, System.Threading.CancellationToken cancellationToken = default) where T : UnityEngine.Object
+        {
+            using CoroutineLock coroutineLock = await self.Root().GetComponent<CoroutineLockComponent>().Wait(CoroutineLockType.ResourcesLoader, location.GetHashCode());
+
+            HandleBase handler;
+            if (self.handlers.TryGetValue(location, out handler))
+            {
+                return (T)((AssetHandle)handler).AssetObject;
+            }
+
+            AssetHandle assetHandle = self.package.LoadAssetAsync<T>(location);
+            self.handlers.Add(location, assetHandle);
+
+            // 等待资源加载完成
+            while (!assetHandle.IsDone)
+            {
+                // 检查是否需要取消加载
+                if (cancellationToken.IsCancellationRequested)
+                {
+                    assetHandle.Cancel();
+                    self.handlers.Remove(location);
+                    return null;
+                }
+
+                // 调用进度回调
+                if (progressCallback != null)
+                {
+                    progressCallback(assetHandle.Progress);
+                }
+
+                // 等待一帧
+                await ETTask.Yield();
+            }
+
+            // 检查加载是否成功
+            if (assetHandle.Status != EOperationStatus.Succeed)
+            {
+                self.handlers.Remove(location);
+                return null;
+            }
+
+            return (T)assetHandle.AssetObject;
+        }
     }
 
     /// <summary>
