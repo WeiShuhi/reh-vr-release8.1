@@ -16,6 +16,13 @@ namespace ET.Client
             root.AddComponent<PlayerComponent>();
             root.AddComponent<CurrentScenesComponent>();
             
+            // 初始化VR组件
+            root.AddComponent<ET.Client.VR.VRCoreComponent>();
+            root.AddComponent<ET.Client.VR.VRNetworkComponent>();
+            root.AddComponent<ET.Client.VR.VRVoiceComponent>();
+            root.AddComponent<ET.Client.VR.VRAIInteractionComponent>();
+            root.AddComponent<ET.Client.VR.VRUIRuntimeComponent>();
+            
             // 根据配置修改掉Main Fiber的SceneType
             SceneType sceneType = EnumHelper.FromString<SceneType>(globalComponent.GlobalConfig.AppType.ToString());
             root.SceneType = sceneType;
